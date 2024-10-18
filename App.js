@@ -13,15 +13,15 @@ export default class App extends Component {
     };
   }
 
-  updateCounter = (value)=>{
+  updateCounter = (value) => {
     this.setState({
-      parrentCount: value
-    })
-  }
+      parrentCount: value,
+    });
+  };
 
-  sayHello =(name)=>{
+  sayHello = (name) => {
     alert(`Xin chao ${name} den voi React Native`);
-  }
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -29,9 +29,14 @@ export default class App extends Component {
         <Text>Hello world!</Text>
         <XinChao ten="BIDV" chinhanh="Hanoi" />
         <StatusBar style="auto" />
-        <Counter value={50} updateCounter={this.updateCounter}/>
+        <Counter value={50} updateCounter={this.updateCounter} />
 
-        <Bodem name="VCB" chinhanh="Hanoi" diachi="So1 tran quan khai" sayHello={this.sayHello}/>
+        <Bodem
+          name="VCB"
+          chinhanh="Hanoi"
+          diachi="So1 tran quan khai"
+          sayHello={this.sayHello}
+        />
       </View>
     );
   }
