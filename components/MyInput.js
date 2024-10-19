@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
 
-const MyInput = ({value, label, setValue,...props}) => {
+const MyInput = ({value, label, valueRef,...props}) => {
   const styles = StyleSheet.create({
     textInputContainer: {
       width: "100%",
@@ -18,7 +18,9 @@ const MyInput = ({value, label, setValue,...props}) => {
 
 	const [text, setText] = useState(value)
 	useEffect(()=>{
-		setValue(text);
+		valueRef.current=text;
+		//valueRef(text);
+		console.log(`render ${label}`)
 	})
   return (
     <View style={styles.textInputContainer}>
