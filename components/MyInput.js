@@ -18,17 +18,17 @@ const MyInput = ({value, label, valueRef,...props}) => {
 
 	const [text, setText] = useState(value)
 	useEffect(()=>{
-		valueRef.current=text;
+		//valueRef.current=text;
 		//valueRef(text);
-		console.log(`render ${label}`)
+		//console.log(`render ${label}`)
 	})
   return (
     <View style={styles.textInputContainer}>
       <Text style={{marginBottom: 5}}>{label}</Text>
       <TextInput
         style={[styles.textInput]}
-        value={text}
-        onChangeText={(val) => setText(val)}
+        value={value}
+        //onChangeText={(val) => setText(val)}
         {...props}
       />
     </View>
