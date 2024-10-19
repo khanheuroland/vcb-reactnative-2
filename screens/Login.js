@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
@@ -70,6 +70,11 @@ const Login = () => {
             <Text>This is detail</Text>
           </View>
         </TouchableOpacity>
+      </View>
+      <View>
+        <Button title="Go to login" onPress={()=>{
+          navigation.navigate('FormIkEx', {userName: "txk2601@gmail.com", password: "654321", phone: "0924448888"})
+        }}/>
       </View>
     </View>
   );

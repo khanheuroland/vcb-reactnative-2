@@ -18,7 +18,7 @@ const MyInput = ({value, label, valueRef,...props}) => {
 
 	const [text, setText] = useState(value)
 	useEffect(()=>{
-		//valueRef.current=text;
+		valueRef.current=text;
 		//valueRef(text);
 		//console.log(`render ${label}`)
 	})
@@ -28,7 +28,7 @@ const MyInput = ({value, label, valueRef,...props}) => {
       <TextInput
         style={[styles.textInput]}
         value={value}
-        //onChangeText={(val) => setText(val)}
+        onChangeText={(val) => setText(val)}
         {...props}
       />
     </View>

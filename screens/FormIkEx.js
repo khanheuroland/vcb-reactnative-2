@@ -12,19 +12,21 @@ const loginFormValidationSchema = yup.object().shape({
     .string()
     .min(10, ({ min }) => `Password must be at least ${min} characters`)
     .required("Password is required"),
-  phone: yup.string()
+  phone: yup
+    .string()
     .matches(/[0][0-9]{9}/, "Phone number is not valid")
-    .required("Phone is required")
+    .required("Phone is required"),
 });
 
-const FormIkEx = () => {
+const FormIkEx = ({ navigation, route }) => {
+  const { userName, password, phone } = route.params;
   useEffect(() => {
     console.log("Loaded");
   });
   return (
     <View style={{ marginTop: 100, padding: 15 }}>
       <Formik
-        initialValues={{ userName: "", password: "", phone: "" }}
+        initialValues={{ userName: userName, password: password, phone: phone }}
         validationSchema={loginFormValidationSchema}
         onSubmit={(values) => {
           alert(
@@ -41,7 +43,9 @@ const FormIkEx = () => {
                 onChangeText={handleChange("userName")}
                 value={values.userName}
               ></TextInput>
-              {errors.userName && <Text style={{color: 'red'}}>{errors.userName}</Text>}
+              {errors.userName && (
+                <Text style={{ color: "red" }}>{errors.userName}</Text>
+              )}
             </View>
 
             <View>
@@ -51,7 +55,9 @@ const FormIkEx = () => {
                 onChangeText={handleChange("password")}
                 value={values.password}
               />
-              {errors.password && <Text style={{color: 'red'}}>{errors.password}</Text>}
+              {errors.password && (
+                <Text style={{ color: "red" }}>{errors.password}</Text>
+              )}
             </View>
 
             <View>
@@ -61,7 +67,9 @@ const FormIkEx = () => {
                 onChangeText={handleChange("phone")}
                 value={values.phone}
               />
-              {errors.phone && <Text style={{color: 'red'}}>{errors.phone}</Text>}
+              {errors.phone && (
+                <Text style={{ color: "red" }}>{errors.phone}</Text>
+              )}
             </View>
             <View>
               <Button onPress={handleSubmit} title="Submit" />
@@ -71,22 +79,36 @@ const FormIkEx = () => {
         )}
       </Formik>
 
-      <View style={{marginTop: 20}}>
-        <Button title="Valid Object" onPress={()=>{
+      <View style={{ marginTop: 20 }}>
+        <Button
+          title="Valid Object"
+          onPress={() => {
             var obj = {
               userName: "khanh.tx@live.com",
               password: "1234567890",
-              phone: "0924448888"
-            }
+              phone: "0924448888",
+            };
 
-            loginFormValidationSchema.validate(obj)
-            .then((value)=>{
-              console.log(value)
-            })
-            .catch((err)=>{
-              console.log(err)
-            })
-        }}></Button>
+            loginFormValidationSchema
+              .validate(obj)
+              .then((value) => {
+                console.log(value);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }}
+        ></Button>
+      </View>
+
+      <View>
+        <Button
+          title="Quay Về"
+          onPress={() => {
+            //navigation.navigate("Home");
+            navigation.goBack();
+          }}
+        />
       </View>
     </View>
   );
