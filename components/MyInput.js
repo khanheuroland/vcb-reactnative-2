@@ -24,7 +24,7 @@ const MyInput = ({value, label, valueRef,...props}) => {
 	})
   return (
     <View style={styles.textInputContainer}>
-      <Text>{label}</Text>
+      <Text style={{marginBottom: 5}}>{label}</Text>
       <TextInput
         style={[styles.textInput]}
         value={text}

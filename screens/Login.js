@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from "react-native";
 import MyInput from "../components/MyInput";
+import globalStyle from "../common/globalStyle";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,6 +20,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 5,
     borderRadius: 6,
+  },
+  text: {
+    color: 'yellow'
   }
 })
 
@@ -47,7 +51,25 @@ const Login = () => {
           onPress={() => {
             alert(`Login info: ${usernameRef.current}/${passwordRef.current}`);
           }}
+          color="red"
         />
+
+        <TouchableOpacity 
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 200,
+          backgroundColor: 'black'
+        }}
+        onPress={()=>alert('You have just clicked on button')}>
+          <View style={{backgroundColor: 'green'}}>
+            <Text style={[globalStyle.text, styles.text]}>This is title</Text>
+          </View>
+          <View style={{backgroundColor: 'yellow'}}>
+            <Text>This is detail</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
