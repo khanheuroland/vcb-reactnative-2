@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import MyInput from "../components/MyInput";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   textInputContainer:{
-    width: '100%'
+    width: '100%',
+    marginVertical: 5
   },
   textInput: {
     borderColor: "#EEE",
@@ -21,28 +23,28 @@ const styles = StyleSheet.create({
 })
 
 const Login = () => {
-  const [username, setUserName] = useState("txk2691@live.com");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const usernameRef = useRef(null);
-  const passwordRef = useRef(null);
-  
+  const [phone, setPhone] = useState("");
   return (
     <View
       style={styles.container}
     >
       <Text style={{ fontSize: 30, fontWeight: "bold" }}>Login Header</Text>
 
-      <View style={styles.textInputContainer}>
+      {/* <View style={styles.textInputContainer}>
         <Text>Username</Text>
         <TextInput
-          style={[styles.textInput, {color:'red'}]}
+          style={[styles.textInput]}
           ref={usernameRef}
           value={username}
           onChangeText={(value) => setUserName(value)}
+          keyboardType="email-address"
         />
-      </View>
+      </View> */}
+      <MyInput value="" label="Username" keyboardType="email-address" setValue={setUserName}/>
 
-      <View style={styles.textInputContainer}>
+      {/* <View style={styles.textInputContainer}>
         <Text>Password</Text>
         <TextInput
           style={styles.textInput}
@@ -50,7 +52,20 @@ const Login = () => {
           secureTextEntry={true}
           onChangeText={(value) => setPassword(value)}
         />
-      </View>
+      </View> */}
+      <MyInput value="" label="Password" secureTextEntry={true} setValue={setPassword}/>
+
+      {/* <View style={styles.textInputContainer}>
+        <Text>Phone</Text>
+        <TextInput
+          style={styles.textInput}
+          ref={passwordRef}
+          secureTextEntry={true}
+          onChangeText={(value) => setPassword(value)}
+          keyboardType="phone-pad"
+        />
+      </View> */}
+      <MyInput label="Phone number" value="0924448868" keyboardType="phone-pad" setValue={setPhone}/>
 
       <View style={{ width: "100%", paddingTop: 20 }}>
         <Button
